@@ -1,0 +1,48 @@
+{
+  "name": "ol-couchdb-source",
+  "version": "1.0.0",
+  "description": "Open Layers vector source for reading GeoJSON documents from CouchDB",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "",
+    "webpack": "webpack-dev-server --watch --inline",
+    "start": "concurrently \"npm:webpack\" \"npm:pouchdb\" --kill-others",
+    "deploy": "babel src --out-dir lib",
+    "pouchdb": "./node_modules/pouchdb-server/bin/pouchdb-server --port 3000 --in-memory"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notnotse/ol-couchdb-source.git"
+  },
+  "keywords": [
+    "OpenLayers",
+    "CouchDB"
+  ],
+  "author": "Not Not Consulting",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/notnotse/ol-couchdb-source/issues"
+  },
+  "homepage": "https://github.com/notnotse/ol-couchdb-source#readme",
+  "peerDependencies": {
+    "openlayers": "4.x"
+  },
+  "dependencies": {
+    "pouchdb": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "case-sensitive-paths-webpack-plugin": "^2.1.2",
+    "concurrently": "^3.6.1",
+    "html-webpack-plugin": "^3.2.0",
+    "openlayers": "4.x",
+    "pouchdb-server": "^4.0.1",
+    "prettier": "^1.14.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
