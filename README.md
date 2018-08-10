@@ -7,6 +7,32 @@ OpenLayers source for fetching and displaying GeoJSON documents from a CouchDB s
 - [OpenLayers](http://openlayers.org) Library for creating interactive maps on the web.
 - [CouchDB](https://couchdb.apache.org) (or compatible) database server.
 
+## CouchDB document format
+
+Documents are expected to be a valid GeoJSON feature.
+
+Example
+
+```
+{
+  "_id": "b98c7d39-f556-4ead-ac3a-86133c66978a",
+  "_rev": "1-e4774e4ee81042448f007d7d987b99d1",
+  "type": "Feature",
+  "properties": {},
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -27.773437499999996,
+      21.94304553343818
+    ]
+  }
+}
+```
+
+### Attachments
+
+Attachments will generate a property in the `ol.Feature` properties object with the filename as the key and the full path to the file as the value.
+
 ## Installation
 
 `npm install notnotse/ol-couchdb-source`

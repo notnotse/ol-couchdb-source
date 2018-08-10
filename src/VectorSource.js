@@ -15,23 +15,16 @@ const VectorSource = (databaseUrl, opt) => {
   const removeDesignDocs = result =>
     result.rows.filter(row => row.id.indexOf("_design") < 0)
 
-  const getGeoJSON = () => {
-    return db
+  const getGeoJSON = () =>
+    db
       .allDocs({ include_docs: true })
       .then(removeDesignDocs)
-      .then(rows => {
-        return rows
-      })
       .then(rowsToGeoJSON)
-  }
 
-  const appendUrlToAttachments = dbUrl => doc => {
-    return Object.keys(doc._attachments || {}).map(key => {
-      return {
-        [key]: `${dbUrl}/${doc.id}/${key}`
-      }
-    })
-  }
+  const appendUrlToAttachments = dbUrl => doc =>
+    Object.keys(doc._attachments || {}).map(key => ({
+      [key]: `${dbUrl}/${doc.id}/${key}`
+    }))
 
   const parseAttachments = appendUrlToAttachments(databaseUrl)
 

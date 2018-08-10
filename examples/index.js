@@ -34,7 +34,6 @@ const init = () => {
   })
 
   setTimeout(() => {
-    console.log("update")
     couchSource.update()
   }, 3000)
 }
