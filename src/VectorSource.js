@@ -23,7 +23,7 @@ const VectorSource = (databaseUrl, opt) => {
 
   const appendUrlToAttachments = dbUrl => doc =>
     Object.keys(doc._attachments || {}).map(key => ({
-      [key]: `${dbUrl}/${doc.id}/${key}`
+      [key]: `${dbUrl}/${doc._id}/${key}`
     }))
 
   const parseAttachments = appendUrlToAttachments(databaseUrl)
@@ -35,7 +35,11 @@ const VectorSource = (databaseUrl, opt) => {
       properties: Object.assign(
         {},
         ...parseAttachments(row.doc),
-        row.doc.properties
+        row.doc.properties,
+        {
+          _id: row.doc._id,
+          _rev: row.doc._rev
+        }
       ),
       geometry: row.doc.geometry
     }))

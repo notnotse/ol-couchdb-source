@@ -1,6 +1,6 @@
 {
   "name": "ol-couchdb-source",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Open Layers vector source for reading GeoJSON documents from CouchDB",
   "main": "lib/index.js",
   "scripts": {
@@ -9,16 +9,13 @@
     "start": "concurrently \"npm:webpack\" \"npm:pouchdb\" --kill-others",
     "build": "babel src --out-dir lib",
     "pouchdb": "./node_modules/pouchdb-server/bin/pouchdb-server --port 3000 --in-memory",
-    "postinstall": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/notnotse/ol-couchdb-source.git"
   },
-  "keywords": [
-    "OpenLayers",
-    "CouchDB"
-  ],
+  "keywords": ["OpenLayers", "CouchDB"],
   "author": "Not Not Consulting",
   "license": "MIT",
   "bugs": {

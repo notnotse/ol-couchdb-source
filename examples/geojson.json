@@ -2,7 +2,9 @@
   {
     "_id": "1",
     "type": "Feature",
-    "properties": {},
+    "properties": {
+      "name": "Feature #1"
+    },
     "geometry": {
       "type": "Point",
       "coordinates": [-27.773437499999996, 21.94304553343818]
@@ -11,7 +13,9 @@
   {
     "_id": "2",
     "type": "Feature",
-    "properties": {},
+    "properties": {
+      "name": "Feature #2"
+    },
     "geometry": {
       "type": "Point",
       "coordinates": [-23.203125, 46.31658418182218]
@@ -20,7 +24,9 @@
   {
     "_id": "3",
     "type": "Feature",
-    "properties": {},
+    "properties": {
+      "name": "Feature #3"
+    },
     "geometry": {
       "type": "Point",
       "coordinates": [17.578125, 36.03133177633187]
