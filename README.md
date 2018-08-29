@@ -67,6 +67,7 @@ Options
 | Name           | Type                           | Default                | Description                                                                                            |
 | -------------- | ------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------ |
 | dataProjection | <code>ol.ProjectionLike</code> | <code>undefined</code> | Projection of the data we are reading. A projection as `ol.proj.Projection` or a SRS identifier string |
+| fetch          | <code>Object</code>            | <code>undefined</code> | Optional options to add to all `fetch` requests.                                                       |
 
 Example
 

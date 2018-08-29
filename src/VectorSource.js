@@ -2,11 +2,18 @@ import PouchDB from "pouchdb"
 import ol from "openlayers"
 
 const VectorSource = (databaseUrl, opt) => {
-  const options = Object.assign({}, opt, {
-    featureProjection: undefined
+  const sourceOptions = Object.assign({}, opt, {
+    featureProjection: undefined,
+    fetch: undefined
   })
 
-  const db = new PouchDB(databaseUrl)
+  const db = new PouchDB(databaseUrl, {
+    fetch: (url, dbOptions) => {
+      const fetchOptions = opt ? opt.fetch : undefined
+
+      return fetch(url, Object.assign({}, dbOptions, fetchOptions))
+    }
+  })
 
   const geoJSONFormat = new ol.format.GeoJSON()
 
@@ -49,14 +56,14 @@ const VectorSource = (databaseUrl, opt) => {
     getGeoJSON().then(geoJSON => {
       const features = geoJSONFormat.readFeatures(geoJSON, {
         featureProjection: featureProjection,
-        dataProjection: options.dataProjection
+        dataProjection: sourceOptions.dataProjection
       })
       this.addFeatures(features)
     })
   }
 
   const source = new ol.source.Vector(
-    Object.assign({}, options, {
+    Object.assign({}, sourceOptions, {
       strategy: ol.loadingstrategy.all,
       loader: sourceLoader
     })
