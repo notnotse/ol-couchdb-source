@@ -10,8 +10,7 @@ const VectorSource = (databaseUrl, opt) => {
   const db = new PouchDB(databaseUrl, {
     fetch: (url, dbOptions) => {
       const fetchOptions = opt ? opt.fetch : undefined
-
-      return fetch(url, Object.assign({}, dbOptions, fetchOptions))
+      return PouchDB.fetch(url, Object.assign({}, dbOptions, fetchOptions))
     }
   })
 

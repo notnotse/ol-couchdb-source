@@ -1,6 +1,6 @@
 {
   "name": "ol-couchdb-source",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Open Layers vector source for reading GeoJSON documents from CouchDB",
   "main": "lib/index.js",
   "scripts": {
