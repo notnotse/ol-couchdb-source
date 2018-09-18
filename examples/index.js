@@ -10,21 +10,23 @@ const db = new PouchDB(databaseUrl)
 
 db.bulkDocs(geojson)
   .then(res => {
-    console.log("bulkDocs result", res)
     init()
   })
   .catch(console.error)
 
 const init = () => {
-  const couchSource = CouchDBVectorSource(databaseUrl)
+  const couchSource = CouchDBVectorSource(databaseUrl, {
+    replication: true
+  })
+  const layer = new ol.layer.Vector({
+    source: couchSource
+  })
   const map = new ol.Map({
     layers: [
       new ol.layer.Tile({
         source: new ol.source.OSM()
       }),
-      new ol.layer.Vector({
-        source: couchSource
-      })
+      layer
     ],
     target: "map",
     view: new ol.View({
@@ -33,7 +35,13 @@ const init = () => {
     })
   })
 
-  setTimeout(() => {
-    couchSource.update()
-  }, 3000)
+  const replicationStopButton = document.getElementById("stopReplication")
+  const replicationStartButton = document.getElementById("startReplication")
+
+  replicationStopButton.addEventListener("click", e =>
+    couchSource.replication.stop()
+  )
+  replicationStartButton.addEventListener("click", e =>
+    couchSource.replication.start()
+  )
 }

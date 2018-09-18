@@ -2,8 +2,22 @@
   <head>
     <title>ol-couchdb-source</title>
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <style>
+      body {
+        padding: 0;
+      }
+      #toolbar {
+        background-color: black;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
+    <div id="toolbar">
+      <button id="stopReplication">Stop Replication</button>
+      <button id="startReplication">Start Replication</button>
+    </div>
     <div id="map" />
   </body>
 </html>
