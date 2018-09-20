@@ -68,6 +68,7 @@ Options
 | -------------- | ------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------ |
 | dataProjection | <code>ol.ProjectionLike</code> | <code>undefined</code> | Projection of the data we are reading. A projection as `ol.proj.Projection` or a SRS identifier string |
 | fetch          | <code>Object</code>            | <code>undefined</code> | Optional options to add to all `fetch` requests.                                                       |
+| replication    | <code>bool</code>              | <code>undefined</code> | Start live replication.                                                                                |
 
 Example
 
@@ -86,6 +87,28 @@ Example
 ```
 const couchSource = CouchDBVectorSource("https://localhost:3000/geodata")
 couchSource.update()
+```
+
+### .replication.start()
+
+Start live replication
+
+Example
+
+```
+const couchSource = CouchDBVectorSource("https://localhost:3000/geodata")
+couchSource.replication.start()
+```
+
+### .replication.stop()
+
+Stop live replication
+
+Example
+
+```
+const couchSource = CouchDBVectorSource("https://localhost:3000/geodata")
+couchSource.replication.stop()
 ```
 
 ## Development
