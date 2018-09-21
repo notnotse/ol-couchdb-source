@@ -114,7 +114,7 @@ const VectorSource = (databaseUrl, opt) => {
       source.addFeature(
         geoJSONFormat.readFeature(rowToGeoJSON(row), {
           featureProjection: state.featureProjection,
-          dataProjection: state.dataProjection
+          dataProjection: sourceOptions.dataProjection
         })
       )
     }
