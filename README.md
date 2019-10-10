@@ -43,7 +43,7 @@ Complete example can be found in the `examples` folder.
 
 ```javascript
 import ol from "openlayers"
-import { CouchDBVectorSource } from "ol-couchdb-sourc"
+import { CouchDBVectorSource } from "ol-couchdb-source"
 
 const map = new ol.Map({
   layers: [
