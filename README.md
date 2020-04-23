@@ -31,7 +31,7 @@ Example
 
 ### Attachments
 
-Attachments will generate a property in the `ol.Feature` properties object with the filename as the key and the full path to the file as the value.
+Attachments will generate a property in the `Feature` properties object with the filename as the key and the full path to the file as the value.
 
 ## Installation
 
@@ -42,17 +42,19 @@ Attachments will generate a property in the `ol.Feature` properties object with 
 Complete example can be found in the `examples` folder.
 
 ```javascript
-import ol from "openlayers"
+import Map from "ol/Map"
+import VectorLayer from "ol/layer/Vector"
+import View from "ol/View"
 import { CouchDBVectorSource } from "ol-couchdb-source"
 
-const map = new ol.Map({
+const map = new Map({
   layers: [
-    new ol.layer.Vector({
+    new VectorLayer({
       source: CouchDBVectorSource("https://server/database")
     })
   ],
   target: "map",
-  view: new ol.View()
+  view: new View()
 })
 ```
 

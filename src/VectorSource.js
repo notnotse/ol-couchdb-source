@@ -1,6 +1,7 @@
 import PouchDB from "pouchdb"
-import ol from "openlayers"
-
+import { GeoJSON } from "ol/format"
+import { Vector as OLVectorSource } from "ol/source"
+import * as olLoadingstrategy from "ol/loadingstrategy"
 const VectorSource = (databaseUrl, opt) => {
   const sourceOptions = Object.assign(
     {
@@ -27,7 +28,7 @@ const VectorSource = (databaseUrl, opt) => {
     }
   })
 
-  const geoJSONFormat = new ol.format.GeoJSON()
+  const geoJSONFormat = new GeoJSON()
 
   const isString = str => typeof str === "string" || str instanceof String
 
@@ -145,9 +146,9 @@ const VectorSource = (databaseUrl, opt) => {
   }
 
   const createSource = () => {
-    const source = new ol.source.Vector(
+    const source = new OLVectorSource(
       Object.assign({}, sourceOptions, {
-        strategy: ol.loadingstrategy.all,
+        strategy: olLoadingstrategy.all,
         loader: sourceLoader
       })
     )
