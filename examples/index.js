@@ -1,4 +1,9 @@
-import ol from "openlayers"
+import OSM from "ol/source/OSM"
+import TileLayer from "ol/layer/Tile"
+import View from "ol/View"
+import Map from "ol/Map"
+import VectorLayer from "ol/layer/Vector"
+
 import PouchDB from "pouchdb"
 import geojson from "./geojson.json"
 
@@ -18,18 +23,18 @@ const init = () => {
   const couchSource = CouchDBVectorSource(databaseUrl, {
     replication: true
   })
-  const layer = new ol.layer.Vector({
+  const layer = new VectorLayer({
     source: couchSource
   })
-  const map = new ol.Map({
+  const map = new Map({
     layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
+      new TileLayer({
+        source: new OSM()
       }),
       layer
     ],
     target: "map",
-    view: new ol.View({
+    view: new View({
       center: [0, 0],
       zoom: 2
     })
