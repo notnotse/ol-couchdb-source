@@ -23,6 +23,8 @@ const VectorSource = (databaseUrl, opt) => {
 
   const db = new PouchDB(databaseUrl, {
     fetch: (url, dbOptions) => {
+      var headers = opt ? opt.fetch ? opt.fetch.ajax ?opt.fetch.ajax.headers :{}: {} : {};
+      Object.keys(headers).forEach(h => dbOptions.headers.set(h, headers[h]));
       const fetchOptions = opt ? opt.fetch : undefined
       return PouchDB.fetch(url, Object.assign({}, dbOptions, fetchOptions))
     }
